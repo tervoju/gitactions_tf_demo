@@ -20,7 +20,7 @@ env:
   ENVIRONMENT_NAME: "dev"
   ARM_CLIENT_ID: "${{ secrets.AZURE_DEV_CLIENT_ID }}"               #  service principal app id
   ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_DEV_SUBSCRIPTION_ID }}"   # subscription id
-  ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"                   # tenant id
+  ARM_TENANT_ID: "${{ secrets.AZURE_DEV_TENANT_ID }}"                   # tenant id
   ARM_ACCESS_KEY: "${{ secrets.TF_ACCESS_KEY }}"                    # this is the access key to container of the tfstate
   RESOURCE_GROUP_NAME: $AZURE_DEV_RESOURCE_GROUP_NAME
 
