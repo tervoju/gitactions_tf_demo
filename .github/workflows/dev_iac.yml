@@ -77,7 +77,7 @@ jobs:
         id: tf-plan
         run: |
           export exitcode=0
-          terraform plan -detailed-exitcode -no-color -out tfplan || export exitcode=$?
+          terraform plan -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_PASSWORD }}" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
           echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
           
           if [ $exitcode -eq 1 ]; then
@@ -180,5 +180,5 @@ jobs:
           cp -R .terraform ../../../.terraform
           cd ../../../
           echo ${{ secrets.CLIENT_PASSWORD }}
-          terraform apply -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_PASSWORD }}" -auto-approve  tfplan
+          terraform apply -auto-approve  tfplan
           
