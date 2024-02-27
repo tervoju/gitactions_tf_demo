@@ -180,5 +180,5 @@ jobs:
           cp -R .terraform ../../../.terraform
           cd ../../../
 
-          terraform apply -auto-approve -var "client_id=${env.CLIENT_ID}" -var "client_secret=${env.CLIENT_PASSWORD}" tfplan
+          terraform apply -auto-approve -var="client_id=${{env.CLIENT_ID}}" -var="client_secret=${{env.CLIENT_PASSWORD}}" tfplan
           
