@@ -1,6 +1,6 @@
 variable "base_tfstate" {
   type    = string
-  default = "brightly-iot-tfstates"
+  default = "dev-tfstate"
 }
 
 variable "location" {
