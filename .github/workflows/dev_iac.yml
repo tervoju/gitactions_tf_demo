@@ -22,6 +22,8 @@ env:
   ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_DEV_SUBSCRIPTION_ID }}"   # subscription id
   ARM_TENANT_ID: "${{ secrets.AZURE_DEV_TENANT_ID }}"                   # tenant id
   ARM_ACCESS_KEY: "${{ secrets.TF_ACCESS_KEY }}"                    # this is the access key to container of the tfstate
+  CLIENT_ID: "${{ secrets.CLIENT_ID }}"  
+  CLIENT_PASSWORD: "${{ secrets.CLIENT_PASSWORD }}" 
   RESOURCE_GROUP_NAME: $AZURE_DEV_RESOURCE_GROUP_NAME
 
 jobs:
@@ -178,5 +180,5 @@ jobs:
           cp -R .terraform ../../../.terraform
           cd ../../../
 
-          terraform apply -auto-approve tfplan
+          terraform apply -auto-approve -var "client_id=${CLIENT_ID}" -var "client_password=${CLIENT_PASSWORD}" tfplan
           

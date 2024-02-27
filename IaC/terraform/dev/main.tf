@@ -35,7 +35,7 @@ Azure Function App
 
 module "function_app" {
   source              = "./../modules/function-app"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
@@ -55,7 +55,7 @@ KEY VAULT
 ----------------------------------------------------------------*/
 module "key_vault" {
   source              = "./../modules/key-vault"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
@@ -89,7 +89,7 @@ Azure Event Hub
 -----------------------------------------------------*/
 module "event_hub_namespace" {
   source              = "./../modules/event-hub-namespace"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
@@ -97,7 +97,7 @@ module "event_hub_namespace" {
 
 module "event_hub_metsa" {
   source              = "./../modules/event-hub"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
@@ -110,7 +110,7 @@ Azure Data Explorer Cluster
 -----------------------------------------------------*/
 module "data_explorer_cluster" {
   source              = "./../modules/data-explorer-cluster"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
@@ -122,7 +122,7 @@ Azure Data Explorer Database
 -----------------------------------------------------*/
 module "data_explorer_database" {
   source              = "./../modules/data-explorer-database"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
@@ -167,7 +167,7 @@ Storage
 -----------------------------------------------------*/
 module "storage" {
   source              = "./../modules/storage"
-  resource_group_name = var.baseresourcegroup
+  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
   project             = var.project
