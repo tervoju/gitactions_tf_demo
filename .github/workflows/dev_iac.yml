@@ -179,6 +179,6 @@ jobs:
           mv .terraform.lock.hcl ../../../.terraform.lock.hcl
           cp -R .terraform ../../../.terraform
           cd ../../../
-
-          terraform apply -var="client_id=${{ env.CLIENT_ID }}" -var="client_secret=${{ env.CLIENT_PASSWORD }}" -auto-approve  tfplan
+          echo ${{ secrets.CLIENT_PASSWORD }}
+          terraform apply -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_PASSWORD }}" -auto-approve  tfplan
           
