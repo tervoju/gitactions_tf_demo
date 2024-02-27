@@ -9,11 +9,11 @@ terraform {
     }
   }
   backend "azurerm" {
-    subscription_id      = "3a2b621e-1c4c-431b-9cfc-614bd2c5649d"
-    resource_group_name  = "RG-WEU-PPAD-MetrisDDWIiot-tfstates"
+    subscription_id      = "ae92e392-3813-45dd-9c54-fe320939f03c"
+    resource_group_name  = "rg-tervo-tf-state"
     storage_account_name = "stmetrisddwiiottfstates"
-    container_name       = "tfstate-PPAD-MetrisDDWIiot-dev"
-    key                  = "dev.tfstate"
+    container_name       = "devtervotfstatestorage"
+    key                  = "dev-tfstate"
   }
 }
 
