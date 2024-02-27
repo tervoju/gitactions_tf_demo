@@ -12,7 +12,7 @@ terraform {
     subscription_id      = "ae92e392-3813-45dd-9c54-fe320939f03c"
     resource_group_name  = "rg-tervo-tf-state"
     storage_account_name = "devtervotfstatestorage"
-    container_name       = "dev-tfstate"
+    container_name       = "tfstate"
     key                  = "dev-tfstate"
   }
 }

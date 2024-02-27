@@ -20,11 +20,6 @@ variable "environment" {
   default = "Dev"
 }
 
-variable "baseresourcegroup" {
-  type    = string
-  default = "RG-WEU-PPAD-MetrisDDWIiot-Dev-001"
-}
-
 variable "resource_group_name" {
   type    = string
   default = "RG-WEU-PPAD-MetrisDDWIiot-Dev-001"
