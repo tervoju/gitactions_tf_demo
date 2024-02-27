@@ -50,8 +50,6 @@ jobs:
       - name: Terraform Init
         working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
         run: | 
-          pwd
-          ls -al ./../modules
           terraform init -upgrade
 
       # Validate terraform files
@@ -66,7 +64,7 @@ jobs:
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+            tenant-id: ${{ secrets.AZURE_DEV_TENANT_ID }}
             client-id: ${{ secrets.AZURE_DEV_CLIENT_ID }}
             subscription-id: ${{ secrets.AZURE_DEV_SUBSCRIPTION_ID }}
   
@@ -167,9 +165,9 @@ jobs:
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: ${{ secrets.AZURE_DEV_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_DEV_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_DEV_SUBSCRIPTION_ID }}
   
       # Terraform Apply - with lock file in .terraform folder
       # copy the .terraform.lock.hcl and .terraform folder to the root directory
