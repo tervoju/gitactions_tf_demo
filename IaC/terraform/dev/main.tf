@@ -123,6 +123,7 @@ module "data_explorer_database" {
   location            = var.location
   environment         = var.environment
   project             = var.project
+  appname             = var.appname
   dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
 }
 
@@ -138,18 +139,6 @@ resource "azurerm_kusto_cluster_principal_assignment" "example" {
   principal_id   = var.sp_client_id
   principal_type = "App"
   role           = "AllDatabasesAdmin"
-}
-
-# NOTE: The ADX Cluster is in its own resource group. The database will
-# be placed into the same resource group.
-module "data_explorer_database" {
-  source              = "./../modules/data-explorer-database"
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  environment         = var.environment
-  project             = var.project
-  appname             = var.appname
-  dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
 }
 
 
