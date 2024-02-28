@@ -1,5 +1,5 @@
 resource "azurerm_kusto_cluster" "dx_cluster" {
-  name                = replace("dec${var.project}${var.environment}", "-", "")
+  name                = replace("d${var.project}${var.environment}", "-", "")
   resource_group_name = var.resource_group_name
   location            = var.location
 
