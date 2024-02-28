@@ -92,7 +92,7 @@ module "event_hub" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  appname             = var.appname
+  #appname             = var.appname
 }
 
 # Allow the Function App to send event data to the Event Hub
@@ -123,7 +123,7 @@ module "data_explorer_database" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  appname             = var.appname
+  #appname             = var.appname
   dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
 }
 
