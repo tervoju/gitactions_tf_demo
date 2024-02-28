@@ -70,15 +70,15 @@ resource "azurerm_role_assignment" "secrets_user" {
 }
 
 resource "azurerm_key_vault_secret" "username" {
-  name         = var.client_id
-  #value        = var.username_value
+  name         = var.client_id_name
+  value        = var.client_id_value
   key_vault_id = module.key_vault.key_vault_id
   depends_on   = [module.key_vault.rbac_role_id]
 }
 
 resource "azurerm_key_vault_secret" "password" {
-  name         = var.client_id
-  #value        = var.password_value
+  name         = var.client_secret_name
+  value        = var.client_secret_value
   key_vault_id = module.key_vault.key_vault_id
   depends_on   = [module.key_vault.rbac_role_id]
 }

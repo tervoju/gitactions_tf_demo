@@ -17,7 +17,7 @@ variable "project" {
 
 variable "environment" {
   type    = string
-  default = "Dev"
+  default = "dev"
 }
 
 variable "resource_group_name" {
@@ -25,12 +25,23 @@ variable "resource_group_name" {
   default = "RG-WEU-PPAD-MetrisDDWIiot-Dev-001"
 }
 
-variable "client_id" {
+variable "client_id_name" {
   type      = string
-  sensitive = true
+  default   = "client-id"
 }
 
-variable "client_secret" {
+variable "client_id_value" {
+  description = "Username for  API Oauth"
+  sensitive   = true
+  type        = string
+}
+
+variable "client_secret_name" {
+  type      = string
+  default = "client-secret-id"
+}
+
+variable "client_secret_value" {
   type      = string
   sensitive = true
 }
