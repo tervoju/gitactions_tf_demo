@@ -153,10 +153,9 @@ module "data_explorer_event_hub_connector" {
   project                  = var.project
   location                 = var.location
   environment              = var.environment
-  appname                  = var.appname
   resource_group_name      = var.resource_group_name
-  adx_resource_group_name  = var.resource_group_name
-  app_resource_group_name  = var.resource_group_name
+  #adx_resource_group_name  = var.resource_group_name
+  #app_resource_group_name  = var.resource_group_name
   event_hub_namespace_name = module.event_hub.event_hub_namespace_name
   event_hub_id             = module.event_hub.event_hub_id
   event_hub_name           = module.event_hub.event_hub_name
