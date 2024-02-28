@@ -34,7 +34,7 @@ Azure Function App
 -----------------------------------------------------*/
 
 module "function_app" {
-  source              = "../modules/function-app"
+  source              = "./../modules/function-app"
   project             = var.project
   location            = var.location
   environment         = var.environment
@@ -50,7 +50,6 @@ module "function_app" {
   }
 }
 
-
 /*----------------------------------------------------------------
 KEY VAULT 
 ----------------------------------------------------------------*/
@@ -60,6 +59,7 @@ module "key_vault" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
+  appname = var.appname
 }
 
 # Allow the Function App to read the Secrets
