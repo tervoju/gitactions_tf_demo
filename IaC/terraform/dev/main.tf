@@ -161,7 +161,7 @@ module "data_explorer_event_hub_connector" {
   event_hub_name           = module.event_hub.event_hub_name
   dx_cluster_name          = module.data_explorer_cluster.data_explorer_cluster_name
   dx_database_name         = module.data_explorer_database.data_explorer_database_name
-  dx_database_id           = module.data_explorer_database.data_explorer_database_id
+  #dx_database_id           = module.data_explorer_database.data_explorer_database_id
   dx_table_name = "RawData"
   dx_mapping_name = "RawDataMapping"
 }
