@@ -9,8 +9,6 @@ variable "location" {
   default     = "WEU"
 }
 
-
-
 variable "project" {
   description = "Project name"
   type        = string

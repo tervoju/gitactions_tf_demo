@@ -1,25 +1,37 @@
-variable "location" {
-  description = "Azure region where resources will be created"
-  type        = string
-  default     = "westeurope"
+variable "resource_group_name" {
+  type = string
 }
 
-variable "project" {
-  description = "Project name"
-  type        = string
-  default     = "neova-ddgm"
+variable "location" {
+  type = string
 }
 
 variable "environment" {
-  description = "Current project environment"
-  type        = string
-  default     = "dev"
+  type = string
 }
 
-variable "parent_adx_managed_id" {
-  type = map(string)
-  default = {
-    "dev"  = "3acf02e6-a6ef-4f8f-80b7-ccb2130277a6"
-    "prod" = "not exists yet"
-  }
+variable "project" {
+  type = string
 }
+
+variable "appname" {
+  type = string
+}
+
+variable "app_settings" {
+  type        = map(string)
+  description = "Map of Application Settings. Function can access these as environment variables."
+  default     = {}
+}
+
+variable "python_version" {
+  type        = string
+  description = "Python version used. Example: 3.10"
+}
+
+variable "allowed_ip_blocks_list" {
+  type        = list(string)
+  description = "List of allowed IP address blocks in CIRD format. Example: 192.168.0.1/32"
+  default     = []
+}
+

@@ -38,7 +38,7 @@ module "function_app" {
   project             = var.project
   location            = var.location
   environment         = var.environment
-  resource_group_name = var.resource_group_name
+  resource_group_name = data.azurerm_resource_group.rg.name
   python_version      = "3.11"
   app_settings = {
     KEYVAULT_NAME            = module.key_vault.key_vault_name
@@ -60,7 +60,6 @@ module "key_vault" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  #appname             = var.appname
 }
 
 # Allow the Function App to read the Secrets
@@ -74,14 +73,14 @@ resource "azurerm_key_vault_secret" "username" {
   name         = var.client_id
   value        = var.username_value
   key_vault_id = module.key_vault.key_vault_id
-  depends_on = [module.key_vault.rbac_role_id]
+  depends_on   = [module.key_vault.rbac_role_id]
 }
 
 resource "azurerm_key_vault_secret" "password" {
   name         = var.client_id
   value        = var.password_value
   key_vault_id = module.key_vault.key_vault_id
-  depends_on = [module.key_vault.rbac_role_id]
+  depends_on   = [module.key_vault.rbac_role_id]
 }
 
 /*-----------------------------------------------------
@@ -93,7 +92,6 @@ module "event_hub" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  #appname             = var.appname
 }
 
 # Allow the Function App to send event data to the Event Hub
@@ -124,7 +122,6 @@ module "data_explorer_database" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  #appname             = var.appname
   dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
 }
 
@@ -135,10 +132,10 @@ resource "azurerm_kusto_cluster_principal_assignment" "example" {
   name                = "ADXServicePrincipalAssignment"
   resource_group_name = var.resource_group_name
   cluster_name        = module.data_explorer_cluster.data_explorer_cluster_name
-  tenant_id      = var.tenant_id
-  principal_id   = var.sp_client_id
-  principal_type = "App"
-  role           = "AllDatabasesAdmin"
+  tenant_id           = var.tenant_id
+  principal_id        = var.sp_client_id
+  principal_type      = "App"
+  role                = "AllDatabasesAdmin"
 }
 
 
@@ -150,11 +147,11 @@ Azure Data Explorer event hub connector
 # ADX related objects are created into ADX's resource group.
 
 module "data_explorer_event_hub_connector" {
-  source                   = "./../modules/data-explorer-event-hub-connector"
-  project                  = var.project
-  location                 = var.location
-  environment              = var.environment
-  resource_group_name      = var.resource_group_name
+  source              = "./../modules/data-explorer-event-hub-connector"
+  project             = var.project
+  location            = var.location
+  environment         = var.environment
+  resource_group_name = var.resource_group_name
   #adx_resource_group_name  = var.resource_group_name
   #app_resource_group_name  = var.resource_group_name
   event_hub_namespace_name = module.event_hub.event_hub_namespace_name
@@ -163,7 +160,7 @@ module "data_explorer_event_hub_connector" {
   dx_cluster_name          = module.data_explorer_cluster.data_explorer_cluster_name
   dx_database_name         = module.data_explorer_database.data_explorer_database_name
   #dx_database_id           = module.data_explorer_database.data_explorer_database_id
-  dx_table_name = "RawData"
+  dx_table_name   = "RawData"
   dx_mapping_name = "RawDataMapping"
 }
 
