@@ -92,6 +92,7 @@ module "event_hub" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
+  appname = var.appname
 }
 
 # Allow the Function App to send event data to the Event Hub
