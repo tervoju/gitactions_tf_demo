@@ -12,7 +12,7 @@ variable "location" {
 variable "project" {
   description = "Project name"
   type        = string
-  default     = "PPAD-MetrisDDWIiot"
+  default     = "ppad-metrisddwiiot"
 }
 
 variable "environment" {
@@ -22,7 +22,7 @@ variable "environment" {
 
 variable "resource_group_name" {
   type    = string
-  default = "RG-WEU-PPAD-MetrisDDWIiot-Dev-001"
+  default = "rg-tervo-test-01"
 }
 
 variable "client_id_name" {
