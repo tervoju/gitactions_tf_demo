@@ -6,6 +6,7 @@ on:
       - dev
     paths:
       - 'IaC/terraform/dev/**'
+      - 'IaC/terraform/modules/**'
       - '.github/workflows/dev_iac.yml'
   workflow_dispatch:
 
