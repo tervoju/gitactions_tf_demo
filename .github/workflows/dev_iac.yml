@@ -28,8 +28,8 @@ env:
 
 jobs:
   # infra for the solution 
-  terraform-plan:
-      name: 'Terraform Init/Plan'
+  terraform-init:
+      name: 'Terraform Init'
       runs-on: ubuntu-latest
       env:
         #this is needed since we are running terraform with read-only permissions
@@ -63,13 +63,24 @@ jobs:
       - name: Terraform Format
         run: terraform fmt -check
 
+   
+  
+  terraform-plan:
+      name: 'Terraform Plan'
+      runs-on: ubuntu-latest
+      env:
+        #this is needed since we are running terraform with read-only permissions
+        ARM_SKIP_PROVIDER_REGISTRATION: true
+      outputs:
+        tfplanExitCode: ${{ steps.tf-plan.outputs.exitcode }}
+      
+      steps:
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-            tenant-id: ${{ env.ARM_TENANT_ID }}
-            client-id: ${{ env.ARM_CLIENT_ID }}
-            subscription-id: ${{ env.ARM_SUBSCRIPTION_ID }}
-  
+          tenant-id: ${{ env.ARM_TENANT_ID }}
+          client-id: ${{ env.ARM_CLIENT_ID }}
+          subscription-id: ${{ env.ARM_SUBSCRIPTION_ID }}
       # Generates an execution plan for Terraform
       # An exit code of 0 indicated no changes, 1 a terraform failure, 2 there are pending changes.
       - name: Terraform Plan
