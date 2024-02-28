@@ -47,8 +47,6 @@ variable "sp_client_id" {
   sensitive = true
 }
 
-
-
 variable "appname" {
   type    = string
   default = "metsa"
