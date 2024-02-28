@@ -34,11 +34,11 @@ Azure Function App
 -----------------------------------------------------*/
 
 module "function_app" {
-  source              = "./../modules/function-app"
+  source              = "../modules/function-app"
   project             = var.project
-  resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
+  resource_group_name = var.resource_group_name
   python_version      = "3.11"
   app_settings = {
     KEYVAULT_NAME            = module.key_vault.key_vault_name
@@ -48,6 +48,8 @@ module "function_app" {
     EVENT_HUB_NAME           = module.event_hub.event_hub_name
   }
 }
+
+
 
 /*----------------------------------------------------------------
 KEY VAULT 
