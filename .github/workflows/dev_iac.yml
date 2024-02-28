@@ -177,6 +177,8 @@ jobs:
       - name: Terraform Apply
         working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }} 
         run: |
+          pwd
+          ls -al 
           mv .terraform.lock.hcl ../../../.terraform.lock.hcl
           cp -R .terraform ../../../.terraform
           cd ../../../
