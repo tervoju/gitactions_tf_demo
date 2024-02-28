@@ -38,7 +38,7 @@ module "function_app" {
   project             = var.project
   location            = var.location
   environment         = var.environment
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = var.resource_group_name
   appname             = var.appname
   python_version      = "3.11"
   app_settings = {
