@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "vault" {
-  name                            = replace("kva${var.appname}${var.project}dev", "-", "")
+  name                            = replace("kva${var.project}dev", "-", "")
   resource_group_name             = var.resource_group_name
   location                        = var.location
   enabled_for_deployment          = true
