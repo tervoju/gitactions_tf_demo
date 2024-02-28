@@ -5,7 +5,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.61.0"
+      version = "3.93.0"
     }
   }
   backend "azurerm" {
@@ -59,7 +59,7 @@ module "key_vault" {
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  appname             = var.appname
+  #appname             = var.appname
 }
 
 # Allow the Function App to read the Secrets
