@@ -134,7 +134,6 @@ resource "azurerm_kusto_cluster_principal_assignment" "example" {
   name                = "ADXServicePrincipalAssignment"
   resource_group_name = var.resource_group_name
   cluster_name        = module.data_explorer_cluster.data_explorer_cluster_name
-
   tenant_id      = var.tenant_id
   principal_id   = var.sp_client_id
   principal_type = "App"
@@ -145,7 +144,6 @@ resource "azurerm_kusto_cluster_principal_assignment" "example" {
 /*-----------------------------------------------------
 Azure Data Explorer event hub connector
 -----------------------------------------------------*/
-
 # Create an Event Hub connector and a raw table for the payload data.
 # Event Hubs related objects are created into this applications resource group
 # ADX related objects are created into ADX's resource group.
