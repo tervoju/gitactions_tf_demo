@@ -13,3 +13,8 @@ variable "environment" {
 variable "project" {
   type = string
 }
+
+variable "appname" {
+  type = string
+}
+
