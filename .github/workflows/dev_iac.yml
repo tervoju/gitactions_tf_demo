@@ -29,7 +29,7 @@ env:
 jobs:
   # infra for the solution 
   terraform-init:
-      name: 'Terraform Init'
+      name: 'Terraform Init & plan'
       runs-on: ubuntu-latest
       env:
         #this is needed since we are running terraform with read-only permissions
@@ -62,28 +62,13 @@ jobs:
       # Will fail the build if not
       - name: Terraform Format
         run: terraform fmt -check
-
-   
-  terraform-plan:
-      name: 'Terraform Plan'
-      runs-on: ubuntu-latest
-      needs: [terraform-init]
-      
-      steps:
-      - name: 'Az CLI login'
-        uses: azure/login@v1
-        with:
-          tenant-id: ${{ env.ARM_TENANT_ID }}
-          client-id: ${{ env.ARM_CLIENT_ID }}
-          subscription-id: ${{ env.ARM_SUBSCRIPTION_ID }}
+    
       # Generates an execution plan for Terraform
       # An exit code of 0 indicated no changes, 1 a terraform failure, 2 there are pending changes.
       - name: Terraform Plan
         working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
         id: tf-plan
         run: |
-          pwd
-          ls -al
           export exitcode=0
           terraform plan -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_PASSWORD }}" -var="tenant_id=${{ secrets.AZURE_DEV_TENANT_ID }}" -var="sp_client_id=${{ secrets.AZURE_DEV_CLIENT_ID }}" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
           echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
