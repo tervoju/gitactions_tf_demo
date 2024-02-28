@@ -59,7 +59,7 @@ module "key_vault" {
   location            = var.location
   environment         = var.environment
   project             = var.project
-  appname             = var.appname
+  appname             = var.function_app_name
 }
 
 # Allow the Function App to read the Secrets
