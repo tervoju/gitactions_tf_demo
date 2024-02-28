@@ -6,7 +6,7 @@ variable "base_tfstate" {
 variable "location" {
   description = "Azure region where resources will be created"
   type        = string
-  default     = "WEU"
+  default     = "northeurope"
 }
 
 variable "project" {
