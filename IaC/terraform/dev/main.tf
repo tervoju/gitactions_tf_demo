@@ -118,11 +118,11 @@ module "data_explorer_cluster" {
 Azure Data Explorer Database
 -----------------------------------------------------*/
 module "data_explorer_database" {
+  project             = var.project
   source              = "./../modules/data-explorer-database"
   resource_group_name = var.resource_group_name
   location            = var.location
   environment         = var.environment
-  project             = var.project
   appname             = var.appname
   dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
 }
