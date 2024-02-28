@@ -39,6 +39,7 @@ module "function_app" {
   location            = var.location
   environment         = var.environment
   resource_group_name = data.azurerm_resource_group.rg.name
+  appname             = var.appname
   python_version      = "3.11"
   app_settings = {
     KEYVAULT_NAME            = module.key_vault.key_vault_name
@@ -48,7 +49,6 @@ module "function_app" {
     EVENT_HUB_NAME           = module.event_hub.event_hub_name
   }
 }
-
 
 
 /*----------------------------------------------------------------
