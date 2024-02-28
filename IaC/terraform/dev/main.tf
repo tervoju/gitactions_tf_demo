@@ -126,14 +126,6 @@ module "data_explorer_database" {
   dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
 }
 
-/*-----------------------------------------------------
-Azure Data Explorer Database Create Table
------------------------------------------------------*/
-module "data_explorer_create_table" {
-  source      = "./../modules/data-explorer-kustoscript"
-  database_id = module.data_explorer_database.data_explorer_database_id
-}
-
 # Give the DevOps Service Connection (Service Principal) the privileges
 # to administrate the databases. Needed for various operations such as 
 # setting: .alter-merge cluster policy managed_identity
@@ -148,6 +140,19 @@ resource "azurerm_kusto_cluster_principal_assignment" "example" {
   role           = "AllDatabasesAdmin"
 }
 
+# NOTE: The ADX Cluster is in its own resource group. The database will
+# be placed into the same resource group.
+module "data_explorer_database" {
+  source              = "./../modules/data-explorer-database"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  environment         = var.environment
+  project             = var.project
+  appname             = var.appname
+  dx_cluster_name     = module.data_explorer_cluster.data_explorer_cluster_name
+}
+
+
 /*-----------------------------------------------------
 Azure Data Explorer event hub connector
 -----------------------------------------------------*/
@@ -159,11 +164,12 @@ Azure Data Explorer event hub connector
 module "data_explorer_event_hub_connector" {
   source                   = "./../modules/data-explorer-event-hub-connector"
   project                  = var.project
-  adx_resource_group_name  = var.resource_group_name
-  app_resource_group_name  = var.resource_group_name
   location                 = var.location
   environment              = var.environment
   appname                  = var.appname
+  resource_group_name      = var.resource_group_name
+  adx_resource_group_name  = var.resource_group_name
+  app_resource_group_name  = var.resource_group_name
   event_hub_namespace_name = module.event_hub.event_hub_namespace_name
   event_hub_id             = module.event_hub.event_hub_id
   event_hub_name           = module.event_hub.event_hub_name
