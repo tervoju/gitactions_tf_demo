@@ -9,6 +9,8 @@ variable "location" {
   default     = "WEU"
 }
 
+
+
 variable "project" {
   description = "Project name"
   type        = string
@@ -35,7 +37,19 @@ variable "client_secret" {
   sensitive = true
 }
 
-variable "function_app_name" {
+variable "tenant_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "sp_client_id" {
+  type      = string
+  sensitive = true
+}
+
+
+
+variable "appname" {
   type    = string
-  default = "funcapi2eventhub"
+  default = "metsa"
 }
