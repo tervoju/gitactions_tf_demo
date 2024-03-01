@@ -163,6 +163,7 @@ module "data_explorer_event_hub_connector" {
   dx_database_id           = module.data_explorer_database.data_explorer_database_id
   dx_table_name   = "RawData"
   dx_mapping_name = "RawDataMapping"
+  appname = var.appname
 }
 
 
