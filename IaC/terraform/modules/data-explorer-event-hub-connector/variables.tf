@@ -1,6 +1,12 @@
 // Base variables
-variable "resource_group_name" {
-  type = string
+variable "adx_resource_group_name" {
+  type        = string
+  description = "The resource group that contains the ADX Cluster and other ADX related entities"
+}
+
+variable "app_resource_group_name" {
+  type        = string
+  description = "The resource group that contains the App or Service that produces the data"
 }
 
 variable "location" {
@@ -12,6 +18,10 @@ variable "environment" {
 }
 
 variable "project" {
+  type = string
+}
+
+variable "appname" {
   type = string
 }
 
@@ -37,10 +47,6 @@ variable "dx_database_name" {
   type = string
 }
 
-variable "dx_table_name" {
-  type = string
-}
-
-variable "dx_mapping_name" {
+variable "dx_database_id" {
   type = string
 }

@@ -153,14 +153,14 @@ module "data_explorer_event_hub_connector" {
   location            = var.location
   environment         = var.environment
   resource_group_name = var.resource_group_name
-  #adx_resource_group_name  = var.resource_group_name
-  #app_resource_group_name  = var.resource_group_name
+  adx_resource_group_name  = var.resource_group_name
+  app_resource_group_name  = var.resource_group_name
   event_hub_namespace_name = module.event_hub.event_hub_namespace_name
   event_hub_id             = module.event_hub.event_hub_id
   event_hub_name           = module.event_hub.event_hub_name
   dx_cluster_name          = module.data_explorer_cluster.data_explorer_cluster_name
   dx_database_name         = module.data_explorer_database.data_explorer_database_name
-  #dx_database_id           = module.data_explorer_database.data_explorer_database_id
+  dx_database_id           = module.data_explorer_database.data_explorer_database_id
   dx_table_name   = "RawData"
   dx_mapping_name = "RawDataMapping"
 }
